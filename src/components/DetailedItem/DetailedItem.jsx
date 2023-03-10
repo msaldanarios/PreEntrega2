@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom'
-import style from './detailedItem.modules.css'
+import style from './detailedItem.module.css'
 
 const DetailedItem = ({products}) => {
   const {id} = useParams();

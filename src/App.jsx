@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,6 +25,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route path='/home' element={<ItemListContainer products={products}/>} />
         <Route path='/category/:catid' element={<ItemListContainer products={products}/>} />
         <Route path='/home/:id' element={<DetailedItem products={products} />} />
