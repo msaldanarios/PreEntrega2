@@ -1,0 +1,9 @@
+.container {
+    background-color: skyblue;
+    color: beige;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 10px;
+}
