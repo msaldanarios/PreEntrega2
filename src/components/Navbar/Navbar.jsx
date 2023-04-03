@@ -19,11 +19,9 @@ const Navbar = () => {
                   </Button>
                 </NavLink>
               ))}
-        {/* <NavLink className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""} to={"/category/mensClothing"}>Men's Clothing</NavLink>
-        <NavLink to={"/category/Jewelery"}>Jewelery</NavLink>
-        <NavLink to={"/category/Electronics"}>Electronics</NavLink>
-        <NavLink to={"/category/womensClothing"}>Women's Clothing</NavLink> */}
-        <CartWidget />
+        <Link to="/cart">
+          <CartWidget />
+        </Link>
     </nav>
   )
 }

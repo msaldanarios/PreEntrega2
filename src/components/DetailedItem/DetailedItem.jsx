@@ -10,7 +10,9 @@ const DetailedItem = ({products}) => {
   return (
     <div className={style.container}>
       <h1>{product.title}</h1>
-      <img src={product.image} alt="pro" width={300} />
+      <Link to={`/images/${product.id}`}>
+        <img src={product.image} alt="pro" width={300} />
+      </Link>
       <h3>Price: ${product.price}</h3>
       <h3>Rating: {product.rating.rate}</h3>
       <p>Description: {product.description}</p>

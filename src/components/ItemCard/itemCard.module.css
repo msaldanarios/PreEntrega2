@@ -5,3 +5,8 @@
     flex-wrap: nowrap;
     justify-content: center;
 }
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}

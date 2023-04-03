@@ -1,0 +1,23 @@
+.cartItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px;
+    padding: 20px;
+    align-items: center;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 20px;
+    font-size: 40px;
+    font-family:monospace; 
+}
+
+.titleCart {
+    width: 350px;
+}
