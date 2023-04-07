@@ -1,16 +1,37 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
 import style from './itemCard.module.css'
 import { dataContext } from '../Context/DataContext';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
+import db from "../../../db/firebase-config.js"
 
 const ItemCard = ({product}) => {
   const { cart, setCart} = useContext(dataContext);
   const addCart = () => {
     // console.log(product)
     setCart([...cart, product])
+    addCartItem(product);
   }
+  const [cartItems, setCartItems] = useState([])
+
+  const cartCollectionRef = collection(db, "cartItems")
+
+  const getCartProducts = async () => {
+    const cartCollection = await getDocs(cartCollectionRef);
+    setCartItems(
+      cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
+    )
+  }
+
+  const addCartItem = async () => {
+    await addDoc(cartCollectionRef, product );
+  }
+
+  useEffect(() => {
+    getCartProducts();
+  }, []);
 
   return (
     <Card className={style.container} style={{ width: '300px', height: '600px' }}>

@@ -14,6 +14,7 @@ import Spinner from './components/Spinner/Spinner';
 
 function App() {
   const [products, setProducts] = useState([])
+  const [cartItems, setCartItems] = useState([])
   const [loading, setLoading] = useState(true)
 
 
@@ -27,6 +28,15 @@ function App() {
     setLoading(false)
   }
 
+  const cartCollectionRef = collection(db, "cartItems");
+
+  const getCartProducts = async () => {
+    const cartCollection = await getDocs(cartCollectionRef);
+    setCartItems(
+      cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
+    )
+  }
+
   // const getProducts = async () => {
   //   const res = await axios.get("https://fakestoreapi.com/products");
   //   setProducts(res.data);
@@ -34,6 +44,7 @@ function App() {
 
   useEffect(() => {
     getProducts();
+    getCartProducts();
   }, []);
 
   // console.log(products)
@@ -51,7 +62,7 @@ function App() {
         <Route path='/category/:catid' element={<ItemListContainer products={products}/>} />
         <Route path='/home/:id' element={<DetailedItem products={products} />} />
         <Route path='/category/:catid/:id' element={<DetailedItem products={products} />} />
-        <Route path='/cart' element={<CartItemList products={products} />}/>
+        <Route path='/cart' element={<CartItemList products={products} cartItems={cartItems} />}/>
         <Route path='/images/:itemId' element={<DetailedImage products={products} />} />
         <Route path='*' element={<h2 className='error'>Lo sentimos, no contamos con ese producto</h2>} />
       </Routes>
