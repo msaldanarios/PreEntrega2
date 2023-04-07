@@ -7,15 +7,15 @@ import CartTotal from "./CartTotal";
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const CartItemList = () => {
+const CartItemList = ({cartItems}) => {
   const { cart } = useContext(dataContext);
 
 
-  return cart.length > 0 ? (
+  return (cart.length) > 0 ? (
     <div className='container'>
       <h2 className={style.title}>Cart Items:</h2>
-      <CartElements/>
-      <CartTotal />
+      {cart.map((cartItem) => (<CartElements key={cartItem.id} cartItem={cartItem}/>))}
+      <CartTotal cartItems={cartItems} />
       <div className={style.actButtons}>
         <Button>Pagar</Button>
         <Link to={'/home'}>

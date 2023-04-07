@@ -26,7 +26,12 @@ const ItemCard = ({product}) => {
   }
 
   const addCartItem = async () => {
-    await addDoc(cartCollectionRef, product );
+    await addDoc(cartCollectionRef, product);
+    const cartCollection = await getDocs(cartCollectionRef);
+    setCartItems(
+      cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
+    )
+    getCartProducts();
   }
 
   useEffect(() => {

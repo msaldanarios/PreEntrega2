@@ -16,6 +16,8 @@ const DataProvider = ({children}) => {
         itemsCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
     );
     }
+
+    
     useEffect(() => {
         getProducts();
     }, []);

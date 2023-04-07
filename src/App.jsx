@@ -62,7 +62,7 @@ function App() {
         <Route path='/category/:catid' element={<ItemListContainer products={products}/>} />
         <Route path='/home/:id' element={<DetailedItem products={products} />} />
         <Route path='/category/:catid/:id' element={<DetailedItem products={products} />} />
-        <Route path='/cart' element={<CartItemList products={products} cartItems={cartItems} />}/>
+        <Route path='/cart' element={<CartItemList cartItems={cartItems} products={products}/>}/>
         <Route path='/images/:itemId' element={<DetailedImage products={products} />} />
         <Route path='*' element={<h2 className='error'>Lo sentimos, no contamos con ese producto</h2>} />
       </Routes>
