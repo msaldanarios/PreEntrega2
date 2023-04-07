@@ -7,7 +7,7 @@ import CartTotal from "./CartTotal";
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const CartItemList = ({cartItems}) => {
+const CartItemList = () => {
   const { cart } = useContext(dataContext);
 
 
@@ -15,7 +15,7 @@ const CartItemList = ({cartItems}) => {
     <div className='container'>
       <h2 className={style.title}>Cart Items:</h2>
       {cart.map((cartItem) => (<CartElements key={cartItem.id} cartItem={cartItem}/>))}
-      <CartTotal cartItems={cartItems} />
+      <CartTotal />
       <div className={style.actButtons}>
         <Button>Pagar</Button>
         <Link to={'/home'}>

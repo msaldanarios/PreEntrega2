@@ -12,31 +12,31 @@ const ItemCard = ({product}) => {
   const addCart = () => {
     // console.log(product)
     setCart([...cart, product])
-    addCartItem(product);
+    // addCartItem(product);
   }
-  const [cartItems, setCartItems] = useState([])
+  // const [cartItems, setCartItems] = useState([])
 
-  const cartCollectionRef = collection(db, "cartItems")
+  // const cartCollectionRef = collection(db, "cartItems")
 
-  const getCartProducts = async () => {
-    const cartCollection = await getDocs(cartCollectionRef);
-    setCartItems(
-      cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
-    )
-  }
+  // const getCartProducts = async () => {
+  //   const cartCollection = await getDocs(cartCollectionRef);
+  //   setCartItems(
+  //     cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
+  //   )
+  // }
 
-  const addCartItem = async () => {
-    await addDoc(cartCollectionRef, product);
-    const cartCollection = await getDocs(cartCollectionRef);
-    setCartItems(
-      cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
-    )
-    getCartProducts();
-  }
+  // const addCartItem = async () => {
+  //   await addDoc(cartCollectionRef, product);
+  //   const cartCollection = await getDocs(cartCollectionRef);
+  //   setCartItems(
+  //     cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
+  //   )
+  //   getCartProducts();
+  // }
 
-  useEffect(() => {
-    getCartProducts();
-  }, []);
+  // useEffect(() => {
+  //   getCartProducts();
+  // }, []);
 
   return (
     <Card className={style.container} style={{ width: '300px', height: '600px' }}>

@@ -28,14 +28,14 @@ function App() {
     setLoading(false)
   }
 
-  const cartCollectionRef = collection(db, "cartItems");
+  // const cartCollectionRef = collection(db, "cartItems");
 
-  const getCartProducts = async () => {
-    const cartCollection = await getDocs(cartCollectionRef);
-    setCartItems(
-      cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
-    )
-  }
+  // const getCartProducts = async () => {
+  //   const cartCollection = await getDocs(cartCollectionRef);
+  //   setCartItems(
+  //     cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
+  //   )
+  // }
 
   // const getProducts = async () => {
   //   const res = await axios.get("https://fakestoreapi.com/products");
@@ -44,7 +44,7 @@ function App() {
 
   useEffect(() => {
     getProducts();
-    getCartProducts();
+    // getCartProducts();
   }, []);
 
   // console.log(products)
@@ -62,7 +62,7 @@ function App() {
         <Route path='/category/:catid' element={<ItemListContainer products={products}/>} />
         <Route path='/home/:id' element={<DetailedItem products={products} />} />
         <Route path='/category/:catid/:id' element={<DetailedItem products={products} />} />
-        <Route path='/cart' element={<CartItemList cartItems={cartItems} products={products}/>}/>
+        <Route path='/cart' element={<CartItemList products={products}/>}/>
         <Route path='/images/:itemId' element={<DetailedImage products={products} />} />
         <Route path='*' element={<h2 className='error'>Lo sentimos, no contamos con ese producto</h2>} />
       </Routes>
