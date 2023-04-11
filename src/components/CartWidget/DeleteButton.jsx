@@ -6,10 +6,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { dataContext } from '../Context/DataContext.jsx';
 
 const DeleteButton = ({cartItem}) => {
-  const {cart} = useContext(dataContext)
+  const {cart, setCart} = useContext(dataContext)
 
-  const removeCart = () =>{
-    setCart([...cart, cartItem])
+  const removeCart = (index) =>{
+    const newCart = [...cart];
+    newCart.splice(index,1);
+    setCart(newCart);
   }
 
   // const [cartItems, setCartItems] = useState([])
