@@ -8,11 +8,7 @@ import { dataContext } from '../Context/DataContext.jsx';
 const DeleteButton = ({cartItem}) => {
   const {cart, setCart} = useContext(dataContext)
 
-  const removeCart = (index) =>{
-    const newCart = [...cart];
-    newCart.splice(index,1);
-    setCart(newCart);
-  }
+  const removeCart = (id) => setCart(cart.filter((item) => item.id !== id))
 
   // const [cartItems, setCartItems] = useState([])
   // const cartCollectionRef = collection(db, "cartItems")
@@ -33,7 +29,7 @@ const DeleteButton = ({cartItem}) => {
 
   return (
     <div>
-        <IconButton onClick={() => removeCart()} aria-label="delete" size="small">
+        <IconButton onClick={() => removeCart(cartItem.id)} aria-label="delete" size="small">
           <DeleteIcon fontSize="inherit" />
         </IconButton>
     </div>

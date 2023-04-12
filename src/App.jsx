@@ -14,7 +14,6 @@ import Spinner from './components/Spinner/Spinner';
 
 function App() {
   const [products, setProducts] = useState([])
-  const [cartItems, setCartItems] = useState([])
   const [loading, setLoading] = useState(true)
 
 
@@ -28,26 +27,11 @@ function App() {
     setLoading(false)
   }
 
-  // const cartCollectionRef = collection(db, "cartItems");
-
-  // const getCartProducts = async () => {
-  //   const cartCollection = await getDocs(cartCollectionRef);
-  //   setCartItems(
-  //     cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
-  //   )
-  // }
-
-  // const getProducts = async () => {
-  //   const res = await axios.get("https://fakestoreapi.com/products");
-  //   setProducts(res.data);
-  // }
-
   useEffect(() => {
     getProducts();
-    // getCartProducts();
   }, []);
 
-  // console.log(products)
+
 
   if (loading) {
     return <Spinner />

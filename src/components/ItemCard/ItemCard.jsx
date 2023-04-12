@@ -1,42 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card';
 import style from './itemCard.module.css'
 import { dataContext } from '../Context/DataContext';
-import { addDoc, collection, getDocs } from 'firebase/firestore';
-import db from "../../../db/firebase-config.js"
+
 
 const ItemCard = ({product}) => {
-  const { cart, setCart} = useContext(dataContext);
-  const addCart = () => {
-    // console.log(product)
-    setCart([...cart, product])
-    // addCartItem(product);
-  }
-  // const [cartItems, setCartItems] = useState([])
+  const {addProduct} = useContext(dataContext);
+  const [goToCart, setGoToCart] = useState(false);
+  const [cantidad, setCantidad] = useState(1);
 
-  // const cartCollectionRef = collection(db, "cartItems")
-
-  // const getCartProducts = async () => {
-  //   const cartCollection = await getDocs(cartCollectionRef);
-  //   setCartItems(
-  //     cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
-  //   )
-  // }
-
-  // const addCartItem = async () => {
-  //   await addDoc(cartCollectionRef, product);
-  //   const cartCollection = await getDocs(cartCollectionRef);
-  //   setCartItems(
-  //     cartCollection.docs.map((doc) => ({...doc.data(), id: doc.id}))
-  //   )
-  //   getCartProducts();
-  // }
-
-  // useEffect(() => {
-  //   getCartProducts();
-  // }, []);
+  const addQuantity = (quantity) => {
+    addProduct(product, quantity)
+    setGoToCart(true)
+}
 
   return (
     <Card className={style.container} style={{ width: '300px', height: '600px' }}>
@@ -51,7 +29,7 @@ const ItemCard = ({product}) => {
             <Button variant="primary">More Details</Button>
           </Link>
           <Link to={'/cart'}>
-            <Button onClick={() => addCart(product)}>Add to cart</Button>
+            <Button onClick={() => addQuantity(cantidad)}>Add to cart</Button>
           </Link>
         </div>
       </Card.Body>
